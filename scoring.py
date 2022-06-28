@@ -40,12 +40,13 @@ def score_model():
     y_test = test_data['exited'].values.reshape(-1,1).ravel()
     X_test = test_data.drop(['corporation','exited'], axis=1).values.reshape(-1,3)
 
+
     y_pred = model.predict(X_test)
     f1scores = f1_score(y_pred, y_test)
     print(f1scores)
-    
-    with open(os.path.join(output_model_path, score_filename), 'wb') as f:
-        f.write(f1scores)
+
+    with open(os.path.join(output_model_path, score_filename), 'w') as f:
+        f.write(str(f1scores))
 
 
 if __name__ == '__main__':
