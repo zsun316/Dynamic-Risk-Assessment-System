@@ -31,7 +31,6 @@ def merge_multiple_dataframe():
             df_cur = pd.read_csv(os.path.join(input_folder_path, file), index_col=False)
             df_final = pd.concat([df_final, df_cur]).drop_duplicates().reset_index(drop=True)
 
-    print(df_final)
     # save the merged fies.
     df_final.to_csv(os.path.join(output_folder_path, 'finaldata.csv'),
                     index=False)
