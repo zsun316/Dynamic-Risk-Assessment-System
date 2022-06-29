@@ -39,7 +39,6 @@ def merge_multiple_dataframe():
     df_final.to_csv(os.path.join(output_folder_path, final_data_filename),
                     index=False)
 
-    print(data_files)
     with open(os.path.join(output_folder_path, record_filename), 'w') as f:
         f.write(str(data_files))
 

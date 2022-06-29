@@ -21,7 +21,6 @@ model_path = os.path.join(root_path, config['output_model_path'])
 
 #################Function for training the model
 def train_model():
-
     data_filename = 'finaldata.csv'
     model_filename = 'trainedmodel.pkl'
 
