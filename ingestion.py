@@ -19,6 +19,9 @@ output_folder_path = os.path.join(root_path, config['output_folder_path'])
 #############Function for data ingestion
 def merge_multiple_dataframe():
     #check for datasets, compile them together, and write to an output file
+    final_data_filename = 'finaldata.csv'
+    record_filename = 'ingestedfiles.txt'
+
     files = os.listdir(input_folder_path)
 
     # Get only the csv files, and merge these csv files.
@@ -30,11 +33,15 @@ def merge_multiple_dataframe():
         if file.split('.')[-1] == 'csv':
             df_cur = pd.read_csv(os.path.join(input_folder_path, file), index_col=False)
             df_final = pd.concat([df_final, df_cur]).drop_duplicates().reset_index(drop=True)
+            data_files.append(file)
 
     # save the merged fies.
-    df_final.to_csv(os.path.join(output_folder_path, 'finaldata.csv'),
+    df_final.to_csv(os.path.join(output_folder_path, final_data_filename),
                     index=False)
 
+    print(data_files)
+    with open(os.path.join(output_folder_path, record_filename), 'w') as f:
+        f.write(str(data_files))
 
 if __name__ == '__main__':
     merge_multiple_dataframe()
