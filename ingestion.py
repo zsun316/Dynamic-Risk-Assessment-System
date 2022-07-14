@@ -1,3 +1,9 @@
+"""
+Author: Zhaohan Sun
+Date: July, 2022
+This script is used to ingest data
+"""
+
 import pandas as pd
 import numpy as np
 import os

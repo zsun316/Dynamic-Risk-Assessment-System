@@ -1,3 +1,9 @@
+"""
+Author: Zhaohan Sun
+Date: July, 2022
+This script is used to store models
+"""
+
 from flask import Flask, session, jsonify, request
 import pandas as pd
 import numpy as np

@@ -1,3 +1,9 @@
+"""
+Author: Zhaohan Sun
+Date: July, 2022
+This script is used to generate a confusion matrix and PDF report
+"""
+
 import pickle
 from sklearn.model_selection import train_test_split
 import pandas as pd
@@ -12,9 +18,9 @@ import os
 
 ###############Load config.json and get path variables
 with open('config.json','r') as f:
-    config = json.load(f) 
+    config = json.load(f)
 
-dataset_csv_path = os.path.join(config['output_folder_path']) 
+dataset_csv_path = os.path.join(config['output_folder_path'])
 
 
 
@@ -23,6 +29,7 @@ dataset_csv_path = os.path.join(config['output_folder_path'])
 def score_model():
     #calculate a confusion matrix using the test data and the deployed model
     #write the confusion matrix to the workspace
+    return
 
 
 
