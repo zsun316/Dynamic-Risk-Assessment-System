@@ -3,6 +3,7 @@ Author: Zhaohan Sun
 Date: July, 2022
 This script is used to conduct diagnosis
 """
+
 import pandas as pd
 import numpy as np
 import timeit
@@ -26,7 +27,7 @@ model_path = os.path.join(root_path, config['output_model_path'])
 
 
 ##################Function to get model predictions
-def model_predictions():
+def model_predictions(test_filename = 'testdata.csv'):
 
     test_filename = 'testdata.csv'
 
@@ -45,9 +46,8 @@ def model_predictions():
 
 ##################Function to get summary statistics
 
-def dataframe_summary():
+def dataframe_summary(test_filename='testdata.csv'):
 
-    test_filename = 'testdata.csv'
     test_data = pd.read_csv(os.path.join(test_data_path, test_filename), index_col=False)
 
     df_covar = test_data.drop(['corporation', 'exited'], axis=1)
@@ -60,9 +60,8 @@ def dataframe_summary():
     return mp
 
 ##################Function to check missingness
-def missingness_summary():
+def missingness_summary(test_filename='testdata.csv'):
 
-    test_filename = 'testdata.csv'
     test_data = pd.read_csv(os.path.join(test_data_path, test_filename), index_col=False)
 
     mp_miss_ratio, num_rows = [], test_data.shape[0]
@@ -91,7 +90,7 @@ def training_time():
 def execution_time():
     #calculate timing of training.py and ingestion.py
     ingestion_times, training_times = [], []
-    for _ in range(25):
+    for _ in range(20):
         time = ingestion_time()
         ingestion_times.append(time)
         time = training_time()
@@ -125,14 +124,16 @@ def outdated_packages_list():
 
 
 if __name__ == '__main__':
-    step_pred = model_predictions()
+    test_file = 'testdata.csv'
+
+    step_pred = model_predictions(test_file)
     print(f'The model predictions are {step_pred}')
 
-    step_summary = dataframe_summary()
+    step_summary = dataframe_summary(test_file)
     for key, val in step_summary.items():
         print(f'The summary statistics of column {key} is {val}')
 
-    step_missing = missingness_summary()
+    step_missing = missingness_summary(test_file)
     print(f'The ratio of missingness of each column in test data is {step_missing}')
 
     step_recordtime = execution_time()

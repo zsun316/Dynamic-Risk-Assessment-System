@@ -72,11 +72,10 @@ def score_model():
 
     ## Save the visualization of the Confusion Matrix.
 
-    plt.show()
+    # plt.show()
     fig = ax.get_figure()
     fig.savefig(os.path.join(cf_path, 'confusionmatrix.png'))
     return
-
 
 
 
