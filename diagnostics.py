@@ -22,6 +22,8 @@ root_path = os.path.dirname(os.path.abspath(__file__))
 dataset_csv_path = os.path.join(root_path, config['output_folder_path'])
 test_data_path = os.path.join(root_path, config['test_data_path'])
 prod_deployment_path = os.path.join(root_path, config['prod_deployment_path'])
+model_path = os.path.join(root_path, config['output_model_path'])
+
 
 ##################Function to get model predictions
 def model_predictions():
