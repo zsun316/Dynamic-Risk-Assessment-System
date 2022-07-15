@@ -23,7 +23,7 @@ output_folder_path = os.path.join(root_path, config['output_folder_path'])
 
 
 #############Function for data ingestion
-def merge_multiple_dataframe():
+def merge_multiple_dataframe(data_files=[], df_final=None):
     #check for datasets, compile them together, and write to an output file
     final_data_filename = 'finaldata.csv'
     record_filename = 'ingestedfiles.txt'
@@ -31,8 +31,8 @@ def merge_multiple_dataframe():
     files = os.listdir(input_folder_path)
 
     # Get only the csv files, and merge these csv files.
-    data_files = []
-    df_final = pd.DataFrame(columns=['corporation','lastmonth_activity',
+    if df_final is None:
+        df_final = pd.DataFrame(columns=['corporation','lastmonth_activity',
                                      'lastyear_activity','number_of_employees',
                                      'exited'])
     for file in files:
