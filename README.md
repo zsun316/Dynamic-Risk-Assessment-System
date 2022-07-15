@@ -68,3 +68,11 @@ pip install -r requirements.txt
 
 - The full process that you'll automate is shown in the following figure:
 <img src="models/fullprocess.png" width=550 height=300>
+
+
+## Cron Job
+Run the fullprocess.py script one time every 10 min.
+- In the command line, run the following command: service cron start
+- Open crontab file by running crontab -e in command line. Your workspace may ask you which text editor you want to use to edit the crontab file. You can select option 3, which corresponds to the "vim" text editor.
+- When you're using vim to edit the crontab, you need to press the "i" key to be able to insert a cron job.
+- After you write the cron job in the crontab file, you can save your work and exit vim by pressing the escape key, and then typing ":wq" , and then press Enter. This will save your one-line cron job to the crontab file and return you to the command line. If you want to view your crontab file after exiting vim, you can run crontab -l on the command line.
