@@ -51,6 +51,7 @@ def score_model():
     f1scores = f1_score(y_pred, y_test)
     # print(f1scores)
 
+    
     with open(os.path.join(output_model_path, score_filename), 'w') as f:
         f.write(str(f1scores))
 
